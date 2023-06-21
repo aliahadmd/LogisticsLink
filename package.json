@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "description": "Customer management app",
   "type": "module",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./server",
-    "start": "node ./server",
+    "dev": "nodemon ./index",
+    "start": "node ./index",
     "style": "tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch"
   },
   "keywords": [],
