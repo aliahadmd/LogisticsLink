@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="/css/output.css">
+</head>
+
+<body>
+    <div class="flex flex-col flex-wrap text-justify gap-5 p-5">
+        <div class="overflow-x-auto">
+            <table class="table table-xs">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>VAT</th>
+                        <th>Address</th>
+                        <th>Role</th>
+                        <th>Verified</th>
+                        <% if (typeof subscription !== 'undefined') { %>
+                            <th>Subscription Status</th>
+                        <% } %>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (typeof users !== 'undefined' && Array.isArray(users)) {
+                        users.forEach(user => { %>
+                            <tr>
+                                <td><%= user.name %></td>
+                                <td><%= user.email %></td>
+                                <td><%= user.phone_number %></td>
+                                <td><%= user.vat %></td>
+                                <td><%= user.address %></td>
+                                <td><%= user.role %></td>
+                                <td><%= user.isVerified %></td>
+                                <% if (typeof subscription !== 'undefined' && user.role === 'subscriber') { %>
+                                    <td><%= subscription.status %></td>
+                                <% } %>
+                                <td><a href="/dashboard/me/<%= user.id %>" class="badge badge-error delete-link">Delete</a></td>
+                            </tr>
+                        <% });
+                    } else if (typeof user !== 'undefined') { %>
+                        <tr>
+                            <td><%= user.name %></td>
+                            <td><%= user.email %></td>
+                            <td><%= user.phone_number %></td>
+                            <td><%= user.vat %></td>
+                            <td><%= user.address %></td>
+                            <td><%= user.role %></td>
+                            <td><%= user.isVerified %></td>
+                            <% if (typeof subscription !== 'undefined' && user.role === 'subscriber' && subscription.data && subscription.data.length > 0) { %>
+                                    <td><%= subscription.data[0].status %></td>
+                                <% }else{%>
+                                    <td>Not Subscribed</td>
+                                <% } %>
+                            <td><a href="/dashboard/me/<%= user.id %>" class="badge badge-error delete-link">Delete</a></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>VAT</th>
+                        <th>Address</th>
+                        <th>Role</th>
+                        <th>Verified</th>
+                        <% if (typeof subscription !== 'undefined') { %>
+                            <th>Subscription Status</th>
+                        <% } %>
+                        <th>Delete</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+
+    <script>
+        const deleteLinks = document.querySelectorAll('.delete-link');
+        deleteLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const confirmDelete = confirm("Are you sure you want to delete this user?");
+                if (!confirmDelete) {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

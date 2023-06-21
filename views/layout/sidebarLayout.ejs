@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/output.css">
+</head>
+<body>
+   
+        <%- include('../components/header.ejs') %>
+  
+  
+
+
+    <div class="drawer lg:drawer-open">
+        <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-content">
+            <label for="my-drawer" class="btn btn-primary drawer-button lg:hidden">Open Sidebar</label>
+            <%- body %>
+        </div> 
+        <div class="drawer-side">
+          <label for="my-drawer" class="drawer-overlay"></label>
+          <ul class="menu pl-4 pr-4 pt-8 pb-4 w-80 h-full bg-base-200 text-base-content">
+            <!-- Sidebar content here -->
+            <li class="lg:tooltip" data-tip="* only (Freight Fordarders) can create!"><a href="/dashboard/create">Create Service</a></li>
+        <hr class="border border-gray-300">
+        <li><a href="/dashboard">View Service</a></li>
+        <hr class="border border-gray-300">
+        <li><a href="/dashboard/me">My Profile</a></li>
+        <hr class="border border-gray-300">
+        <li><a href="/">Homepage</a></li>
+        <hr class="border border-gray-300">
+        <li><a href="/signout">Signout</a></li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+ 
+        <%- include('../components/footer.ejs') %>
+  
+</body>
+</html>

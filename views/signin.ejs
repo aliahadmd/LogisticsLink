@@ -1,0 +1,32 @@
+<div class="h-screen">
+  <div class="flex flex-col items-center p-10">
+
+    <h2 class="mt-2 text-center text-3xl font-bold tracking-tight text-base-content">
+      Login to your account
+    </h2>
+    <p class="text-center mt-1">
+      Or <a href="/signup" class="text-primary font-medium hover:cursor-pointer hover:underline"
+        >register</a
+      > if you don't already have an account.
+    </p>
+  </div>
+
+
+
+      <form method="POST" action="/signin" class="flex flex-col gap-5 items-center justify-center">
+        <input class="input input-bordered w-full max-w-xs" type="email" name="email" placeholder="Email" required>
+        <input class="input input-bordered w-full max-w-xs" type="password" name="password" placeholder="Password" required>
+        <button class="btn btn-primary" type="submit">Signin</button>
+        <!-- error notifications -->
+        <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+          <div class="errors">
+            <% errors.forEach((error) => { %>
+              <div class="alert alert-error">
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <span><%= error %></span>
+              </div>      
+            <% }); %>
+          </div>
+        <% } %>    
+      </form>
+    </div>

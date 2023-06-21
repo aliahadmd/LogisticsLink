@@ -1,0 +1,42 @@
+<div class="pb-10">
+    <div class="flex flex-col items-center p-10">
+
+        <h2 class="mt-2 text-center text-3xl font-bold tracking-tight text-base-content">
+            Register for an account
+        </h2>
+        <p class="text-center mt-1">
+            Or <a href="/signin" class="text-primary font-medium hover:cursor-pointer hover:underline"
+                >sign in</a
+            > if you already have an account.
+        </p>
+    
+    </div>
+
+
+    <form action="/signup" method="POST" class="flex flex-col gap-5 items-center justify-center">
+        <input class="input input-bordered w-full max-w-xs" type="text" name="name" placeholder="Name" required>
+        <input class="input input-bordered w-full max-w-xs" type="email" name="email" placeholder="Email" required>
+        <input class="input input-bordered w-full max-w-xs" type="text" name="phone_number" placeholder="Phone Number" required>
+        <input class="input input-bordered w-full max-w-xs" type="text" name="vat" placeholder="VAT" required>
+        <input class="input input-bordered w-full max-w-xs" type="text" name="address" placeholder="Address" required>
+        <input class="input input-bordered w-full max-w-xs" type="password" name="password" placeholder="Password" required>
+        <select name="role" class="select select-bordered w-full max-w-xs">
+            <option value="admin">Admin</option>
+            <option value="customer">Freight Forwarders</option>
+            <option value="subscriber">Hauliers</option>
+        </select>
+        <button class="btn btn-primary" type="submit">Signup</button>
+
+        <!-- error notifications -->
+       <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+            <div class="errors">
+              <% errors.forEach((error) => { %>
+                <div class="alert alert-error">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                  <span><%= error %></span>
+                </div>      
+              <% }); %>
+            </div>
+          <% } %>    
+    </form>
+</div>

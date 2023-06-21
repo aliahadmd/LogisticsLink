@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/output.css">
+</head>
+
+<body>
+    <div class="flex flex-col flex-wrap text-justify gap-5 p-5">
+        <div class="flex"> <button class="btn btn-active btn-primary"> <a
+                    href="/dashboard/update/<%= note.id %>">update</a></button>
+            <!-- Open the modal using ID.showModal() method -->
+            <button class="btn btn-error" onclick="my_modal_1.showModal()">Delete</button>
+            <dialog id="my_modal_1" class="modal">
+                <form method="dialog" class="modal-box">
+                    <h3 class="font-bold text-lg">Warining!</h3>
+                    <p class="py-4">Are you sure!</p>
+                    <div class="modal-action">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn btn-warning"><a href="/dashboard/delete/<%= note.id %>">Yes
+                                Delete</a></button>
+                        <button class="btn"><a href="/dashboard/view/<%= note.id %>">no</a></button>
+                    </div>
+                </form>
+            </dialog>
+            <p class=" pl-2 text-xs font-bold">* only (Freight Fordarders) can update and delete!</p>
+        </div>
+
+
+
+
+
+
+        <div class="avatar">
+            <div class="mask mask-squircle w-12 h-12">
+                <% if (note.logo) { %>
+                    <img src="/images/<%= note.logo %>" alt="Logo" class="logo-image">
+                    <% } %>
+            </div>
+        </div>
+
+        <div class="flex flex-row gap-3">
+
+            <p class="text-4xl font-bold">
+                <%= note.title %>
+            </p>
+        </div>
+        <div class="flex flex-row gap-3">
+            <p>KmPerMonth: </p>
+            <p>
+                <%= note.kmPerMonth %>
+            </p>
+        </div>
+        <div class="flex flex-row gap-3">
+            <p>Price: </p>
+            <p>
+                <%= note.price %>
+            </p>
+        </div>
+        <div class="flex flex-row gap-3">
+            <p>TruckType: </p>
+            <p>
+                <%= note.truckType %>
+            </p>
+        </div>
+        <div class="flex flex-row gap-3">
+            <p>Description: </p>
+            <p>
+                <%= note.description %>
+            </p>
+
+        </div>
+
+
+        <div class="flex flex-col py-6 items-center bg-neutral text-primary-content min-w-auto">
+            <div class="flex flex-row">
+                <p class="pr-2">Name: </p>
+                <p>
+                    <%= note.User.name %>
+                </p>
+            </div>
+            <div class="flex flex-row">
+                <p class="pr-2">Email: </p>
+                <p>
+                    <%= note.User.email %>
+                </p>
+            </div>
+            <div class="flex flex-row">
+                <p class="pr-2">Phone: </p>
+                <p>
+                    <%= note.User.phone_number %>
+                </p>
+            </div>
+            <div class="flex flex-row">
+                <p class="pr-2">Address: </p>
+                <p>
+                    <%= note.User.address %>
+                </p>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+</body>
+
+</html>
