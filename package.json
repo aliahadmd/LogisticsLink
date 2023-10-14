@@ -5,8 +5,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./index",
-    "start": "node ./index",
+    "dev": "nodemon index.js",
+    "start": "node index.js",
     "style": "tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch"
   },
   "keywords": [],
