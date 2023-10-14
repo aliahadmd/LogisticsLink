@@ -2,7 +2,7 @@ import express from "express";
 import User from "../models/User.js";
 import asyncHandler from "express-async-handler";
 import { validationResult } from "express-validator";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { stripe } from "../config/stripe.js";
 import nodemailer from "nodemailer";
 
