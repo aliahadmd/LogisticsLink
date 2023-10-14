@@ -14,9 +14,5 @@
         "src": "/",
         "dest": "index.ejs"
       }
-    ],
-    "views": {
-      "engine": "ejs",
-      "ext": "ejs"
-    }
+    ]
   }
