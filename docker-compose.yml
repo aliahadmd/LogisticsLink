@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  app:
+    image: node:latest
+    container_name: app
+    working_dir: /app
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    ports:
+      - "8087:8087"
+    command: sh -c 'npm install && npm start'
+    restart: always
