@@ -56,6 +56,6 @@ app.use('/dashboard',noteRouter)
 
 
 // start the server
-app.listen(process.env.PORT||3000,()=>{
-    console.log(`server is running on port ${process.env.PORT}`)
+app.listen(process.env.PORT||8002,()=>{
+    console.log(`server is running on port http://localhost:${process.env.PORT}`)
 })

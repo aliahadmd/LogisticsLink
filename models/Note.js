@@ -16,7 +16,7 @@ const Note=sequelize.define('Note',{
         allowNull:false,
     },
     kmPerMonth:{
-        type:DataTypes.INTEGER,
+        type:DataTypes .INTEGER,
         allowNull:false,
     },
     price:{
@@ -32,11 +32,10 @@ const Note=sequelize.define('Note',{
         allowNull:false,
     },
     userId: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         allowNull: false,
       },
     });
     Note.belongsTo(User, { foreignKey: 'userId' });
 
 export default Note
-
