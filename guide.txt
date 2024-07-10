@@ -1,0 +1,3 @@
+To get fake data:
+
+node ./seeder.js
