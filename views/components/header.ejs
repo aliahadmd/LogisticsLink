@@ -1,28 +1,27 @@
-<div class="navbar bg-base-100 max-w-6xl m-auto border-b border-slate-300">
+<div class="navbar bg-base-100 max-w-6xl mx-auto border-b border-slate-300">
   <div class="navbar-start">
-    <div class="dropdown">
-      <label tabindex="0" class="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
-        </svg>
-      </label>
-      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-        <% if (!userId) { %>
-          <li><a href="/signup">Sign Up</a></li>
-          <li><a href="/signin">Sign In</a></li>
-          <li><a href="/dashboard/create">Create service</a></li>
-          <li><a href="/dashboard">View service</a></li>
-        <% } else { %>
-          <li><a href="/dashboard/me">Profile</a></li>
-          <li><a href="/signout">Signout</a></li>
-          <li><a href="/dashboard/create">Create service</a></li>
-          <li><a href="/dashboard">View service</a></li>
-        <% } %>
-      </ul>
-    </div>
-   
-    <a href="/" class="text-xl font-bold"><span class="text-blue-500">Service</span> <span class="text-black-900">Marketplace</span></a>
-    
+      <div class="dropdown">
+          <label tabindex="0" class="btn btn-ghost lg:hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+              </svg>
+          </label>
+          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 z-50">
+              <% if (!userId) { %>
+                  <li><a href="/signup" class="btn btn-ghost">Sign Up</a></li>
+                  <li><a href="/signin" class="btn btn-ghost">Sign In</a></li>
+              <% } else { %>
+                  <li><a href="/dashboard/me" class="btn btn-ghost">Profile</a></li>
+                  <li><a href="/signout" class="btn btn-ghost">Signout</a></li>
+              <% } %>
+              <li><a href="/dashboard/create" class="btn btn-ghost">Create Service</a></li>
+              <li><a href="/dashboard" class="btn btn-ghost">View Services</a></li>
+          </ul>
+      </div>
+      <a href="/" class="btn btn-ghost normal-case text-xl">
+          <span class="text-primary">Service</span>
+          <span class="text-base-content">Marketplace</span>
+      </a>
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">

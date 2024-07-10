@@ -1,113 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/css/output.css">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.5.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body>
-    <div class="flex flex-col flex-wrap text-justify gap-5 p-5">
-        <div class="flex"> <button class="btn btn-active btn-primary"> <a
-                    href="/dashboard/update/<%= note.id %>">update</a></button>
-            <!-- Open the modal using ID.showModal() method -->
-            <button class="btn btn-error" onclick="my_modal_1.showModal()">Delete</button>
-            <dialog id="my_modal_1" class="modal">
-                <form method="dialog" class="modal-box">
-                    <h3 class="font-bold text-lg">Warining!</h3>
-                    <p class="py-4">Are you sure!</p>
-                    <div class="modal-action">
-                        <!-- if there is a button in form, it will close the modal -->
-                        <button class="btn btn-warning"><a href="/dashboard/delete/<%= note.id %>">Yes
-                                Delete</a></button>
-                        <button class="btn"><a href="/dashboard/view/<%= note.id %>">no</a></button>
+<body class="bg-base-200">
+    <div class="container mx-auto p-4">
+        <div class="card bg-base-100 shadow-xl">
+            <div class="card-body">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center space-x-2">
+                        <button class="btn btn-primary">
+                            <a href="/dashboard/update/<%= note.id %>">Update</a>
+                        </button>
+                        <button class="btn btn-error" onclick="my_modal_1.showModal()">Delete</button>
                     </div>
-                </form>
-            </dialog>
-            <p class=" pl-2 text-xs font-bold">* only (Freight Fordarders) can update and delete!</p>
-        </div>
+                    <p class="text-xs font-bold text-info">* only (Freight Forwarders) can update and delete!</p>
+                </div>
 
+                <dialog id="my_modal_1" class="modal">
+                    <form method="dialog" class="modal-box">
+                        <h3 class="font-bold text-lg">Warning!</h3>
+                        <p class="py-4">Are you sure?</p>
+                        <div class="modal-action">
+                            <a href="/dashboard/delete/<%= note.id %>" class="btn btn-warning">Yes, Delete</a>
+                            <a href="/dashboard/view/<%= note.id %>" class="btn">No</a>
+                        </div>
+                    </form>
+                </dialog>
 
+                <div class="flex items-center space-x-4 mb-4">
+                    <div class="avatar">
+                        <div class="mask mask-squircle w-12 h-12">
+                            <% if (note.logo) { %>
+                                <img src="<%= note.logo %>" alt="Logo" class="logo-image">
+                            <% } %>
+                        </div>
+                    </div>
+                    <h2 class="text-4xl font-bold"><%= note.title %></h2>
+                </div>
 
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div class="stat">
+                        <div class="stat-title">KmPerMonth</div>
+                        <div class="stat-value"><%= note.kmPerMonth %></div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-title">Price</div>
+                        <div class="stat-value"><%= note.price %></div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-title">TruckType</div>
+                        <div class="stat-value"><%= note.truckType %></div>
+                    </div>
+                </div>
 
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold mb-2">Description:</h3>
+                    <p><%= note.description %></p>
+                </div>
 
-
-        <div class="avatar">
-            <div class="mask mask-squircle w-12 h-12">
-                <% if (note.logo) { %>
-                    <img src="/images/<%= note.logo %>" alt="Logo" class="logo-image">
-                    <% } %>
+                <div class="bg-neutral text-neutral-content p-4 rounded-box">
+                    <h3 class="text-lg font-semibold mb-2">Contact Information</h3>
+                    <ul class="space-y-2">
+                        <li><strong>Name:</strong> <%= note.User.name %></li>
+                        <li><strong>Email:</strong> <%= note.User.email %></li>
+                        <li><strong>Phone:</strong> <%= note.User.phone_number %></li>
+                        <li><strong>Address:</strong> <%= note.User.address %></li>
+                    </ul>
+                </div>
             </div>
         </div>
-
-        <div class="flex flex-row gap-3">
-
-            <p class="text-4xl font-bold">
-                <%= note.title %>
-            </p>
-        </div>
-        <div class="flex flex-row gap-3">
-            <p>KmPerMonth: </p>
-            <p>
-                <%= note.kmPerMonth %>
-            </p>
-        </div>
-        <div class="flex flex-row gap-3">
-            <p>Price: </p>
-            <p>
-                <%= note.price %>
-            </p>
-        </div>
-        <div class="flex flex-row gap-3">
-            <p>TruckType: </p>
-            <p>
-                <%= note.truckType %>
-            </p>
-        </div>
-        <div class="flex flex-row gap-3">
-            <p>Description: </p>
-            <p>
-                <%= note.description %>
-            </p>
-
-        </div>
-
-
-        <div class="flex flex-col py-6 items-center bg-neutral text-primary-content min-w-auto">
-            <div class="flex flex-row">
-                <p class="pr-2">Name: </p>
-                <p>
-                    <%= note.User.name %>
-                </p>
-            </div>
-            <div class="flex flex-row">
-                <p class="pr-2">Email: </p>
-                <p>
-                    <%= note.User.email %>
-                </p>
-            </div>
-            <div class="flex flex-row">
-                <p class="pr-2">Phone: </p>
-                <p>
-                    <%= note.User.phone_number %>
-                </p>
-            </div>
-            <div class="flex flex-row">
-                <p class="pr-2">Address: </p>
-                <p>
-                    <%= note.User.address %>
-                </p>
-            </div>
-
-        </div>
-
-
     </div>
-
-
-
 </body>
 
 </html>

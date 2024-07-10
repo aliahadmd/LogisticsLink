@@ -22,7 +22,8 @@
                 <div class="avatar">
                   <div class="mask mask-squircle w-12 h-12">
             <% if (note.logo) { %>
-                <img src="/images/<%= note.logo %>" alt="Logo" class="logo-image">
+                <!-- <img src="/images/<%= note.logo %>" alt="Logo" class="logo-image"> -->
+                 <img src="<%= note.logo %>" alt="Logo" class="logo-image"> 
               <% }else{ %>
                 <h3>no logo</h3>
                 <% } %>
